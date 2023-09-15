@@ -194,7 +194,11 @@ class Main(App):
             self.logger.warn(
                 f"Expected LFS size is too small (~{int(lfs_span_pages)} pages)"
             )
-            return True
+        else:
+            self.logger.warn(
+                f"LFS size is {int(lfs_span)} (~{int(lfs_span_pages)} pages)"
+            )
+
         return True
 
     def disclaimer(self):
