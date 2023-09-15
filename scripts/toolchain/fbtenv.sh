@@ -228,6 +228,8 @@ fbtenv_unpack_toolchain()
     tar -xvf "$FBT_TOOLCHAIN_PATH/toolchain/$TOOLCHAIN_TAR" -C "$FBT_TOOLCHAIN_PATH/toolchain" 2>&1 | fbtenv_show_unpack_percentage;
     mkdir -p "$FBT_TOOLCHAIN_PATH/toolchain" || return 1;
     mv "$FBT_TOOLCHAIN_PATH/toolchain/$TOOLCHAIN_DIR" "$TOOLCHAIN_ARCH_DIR" || return 1;
+    mv "$TOOLCHAIN_ARCH_DIR/arm-none-eabi/bin/ar" "$TOOLCHAIN_ARCH_DIR/arm-none-eabi/bin/ar_"
+    cp "$TOOLCHAIN_ARCH_DIR/../../ar-wrapper.sh" "$TOOLCHAIN_ARCH_DIR/arm-none-eabi/bin/ar"
     echo "done";
     return 0;
 }
