@@ -192,8 +192,9 @@ class Main(App):
         lfs_span_pages = lfs_span / (4 * 1024)
         if lfs_span_pages < self.MIN_LFS_PAGES:
             self.logger.warn(
-                f"Expected LFS size is too small (~{int(lfs_span_pages)} pages)"
+                f"Expected LFS size ({int(lfs_span)}) is too small (~{int(lfs_span_pages)} pages)"
             )
+            # return False
         else:
             self.logger.warn(
                 f"LFS size is {int(lfs_span)} (~{int(lfs_span_pages)} pages)"
