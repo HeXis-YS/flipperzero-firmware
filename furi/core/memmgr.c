@@ -58,7 +58,7 @@ size_t memmgr_get_minimum_free_heap(void) {
     return xPortGetMinimumEverFreeHeapSize();
 }
 
-__attribute__((__used__)) void* __wrap__malloc_r(struct _reent* r, size_t size) {
+void* __wrap__malloc_r(struct _reent* r, size_t size) {
     UNUSED(r);
     return pvPortMalloc(size);
 }
@@ -73,7 +73,7 @@ void* __wrap__calloc_r(struct _reent* r, size_t count, size_t size) {
     return calloc(count, size);
 }
 
-void* __wrap__realloc_r(struct _reent* r, void* ptr, size_t size) {
+__attribute__((__used__)) void* __wrap__realloc_r(struct _reent* r, void* ptr, size_t size) {
     UNUSED(r);
     return realloc(ptr, size);
 }

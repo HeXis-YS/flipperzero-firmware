@@ -11,7 +11,7 @@ void _putchar(char character) {
     furi_thread_stdout_write(&character, 1);
 }
 
-int __wrap_printf(const char* format, ...) {
+__attribute__((__used__)) int __wrap_printf(const char* format, ...) {
     va_list args;
     va_start(args, format);
     int ret = vprintf_(format, args);
