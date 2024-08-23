@@ -20,28 +20,28 @@ int __wrap_printf(const char* format, ...) {
     return ret;
 }
 
-int __wrap_vsnprintf(char* str, size_t size, const char* format, va_list args) {
+__attribute__((__used__)) int __wrap_vsnprintf(char* str, size_t size, const char* format, va_list args) {
     return vsnprintf_(str, size, format, args);
 }
 
-int __wrap_puts(const char* str) {
+__attribute__((__used__)) int __wrap_puts(const char* str) {
     size_t size = furi_thread_stdout_write(str, strlen(str));
     size += furi_thread_stdout_write("\n", 1);
     return size;
 }
 
-int __wrap_putchar(int ch) {
+__attribute__((__used__)) int __wrap_putchar(int ch) {
     size_t size = furi_thread_stdout_write((char*)&ch, 1);
     return size;
 }
 
-int __wrap_putc(int ch, FILE* stream) {
+__attribute__((__used__)) int __wrap_putc(int ch, FILE* stream) {
     UNUSED(stream);
     size_t size = furi_thread_stdout_write((char*)&ch, 1);
     return size;
 }
 
-int __wrap_snprintf(char* str, size_t size, const char* format, ...) {
+__attribute__((__used__)) int __wrap_snprintf(char* str, size_t size, const char* format, ...) {
     va_list args;
     va_start(args, format);
     int ret = __wrap_vsnprintf(str, size, format, args);

@@ -24,6 +24,7 @@ PLACE_IN_SECTION("MB_MEM2") uint32_t __furi_check_registers[13] = {0};
                  "ldr r12, =__furi_check_registers  \n" \
                  "stm r12, {r0-r11}                 \n" \
                  "str lr, [r12, #48]                \n" \
+                 ".ltorg                            \n" \
                  :                                      \
                  :                                      \
                  : "memory");
@@ -50,6 +51,7 @@ PLACE_IN_SECTION("MB_MEM2") uint32_t __furi_check_registers[13] = {0};
                  "bkpt  0x00                        \n" \
                  "wfi                               \n" \
                  "b     debug_loop%=                \n" \
+                 ".ltorg                            \n" \
                  :                                      \
                  : "r"(r0)                              \
                  : "memory");
