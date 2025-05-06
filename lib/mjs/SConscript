@@ -20,6 +20,7 @@ libenv = env.Clone(FW_LIB_NAME="mjs")
 libenv.ApplyLibFlags()
 
 libenv.AppendUnique(
+    CPPDEFINES=["Os"],
     CCFLAGS=[
         "-Wno-redundant-decls",
         "-Wno-unused-function",

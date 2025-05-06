@@ -8,6 +8,7 @@ env.Append(
 
 libenv = env.Clone(FW_LIB_NAME="update_util")
 libenv.ApplyLibFlags()
+libenv.AppendUnique(CPPDEFINES=["Os"])
 
 sources = libenv.GlobRecursive("*.c")
 
