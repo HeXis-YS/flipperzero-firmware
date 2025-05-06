@@ -14,7 +14,7 @@ env.Append(
 
 libenv = env.Clone(FW_LIB_NAME="signal_reader")
 libenv.ApplyLibFlags()
-libenv.AppendUnique(CCFLAGS=["-O3", "-funroll-loops", "-Ofast"])
+libenv.AppendUnique(CCFLAGS=["-Ofast"])
 
 sources = libenv.GlobRecursive("*.c*")
 

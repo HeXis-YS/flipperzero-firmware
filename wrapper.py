@@ -28,7 +28,7 @@ class CompilerWrapper():
         ]
         if "-DOs" in self.args:
             return
-        else:
+        elif not "-Ofast" in self.args:
             self.args += [
                 "-O2",
                 # -O3
@@ -46,22 +46,22 @@ class CompilerWrapper():
                 "-fvect-cost-model=dynamic",
                 "-fversion-loops-for-strides",
                 # -Ofast
-                "-fallow-store-data-races",
-                "-fassociative-math",
-                "-fcx-limited-range",
-                "-fexcess-precision=fast",
-                "-ffinite-math-only",
-                "-fno-math-errno",
-                "-freciprocal-math",
-                "-fno-semantic-interposition",
-                "-fno-signed-zeros",
-                "-fno-trapping-math",
-                "-funsafe-math-optimizations",
+                # "-fallow-store-data-races",
+                # "-fassociative-math",
+                # "-fcx-limited-range",
+                # "-fexcess-precision=fast",
+                # "-ffinite-math-only",
+                # "-fno-math-errno",
+                # "-freciprocal-math",
+                # "-fno-semantic-interposition",
+                # "-fno-signed-zeros",
+                # "-fno-trapping-math",
+                # "-funsafe-math-optimizations",
             ]
         self.args += [
             "-fipa-pta",
             "-fdevirtualize-at-ltrans",
-            # "-fno-semantic-interposition",
+            "-fno-semantic-interposition",
         ]
 
 
