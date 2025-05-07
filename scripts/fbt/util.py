@@ -18,6 +18,7 @@ GLOB_FILE_EXCLUSION = ["*~"]
 # List of environment variables to proxy to child processes
 FORWARDED_ENV_VARIABLES = [
     # CI/CD variables
+    "WORKFLOW_VERSION",
     "WORKFLOW_BRANCH_OR_TAG",
     "DIST_SUFFIX",
     # Python & other tools

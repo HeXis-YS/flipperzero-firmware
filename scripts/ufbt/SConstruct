@@ -74,7 +74,7 @@ env = core_env.Clone(
             "crosscc",
             {
                 "toolchain_prefix": "arm-none-eabi-",
-                "versions": (" 12.3.", " 13.2."),
+                "versions": (" 12.3.", " 13.2.", " 14.2."),
             },
         ),
         "fwbin",
