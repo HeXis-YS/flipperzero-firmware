@@ -36,7 +36,10 @@ class GitVersion:
         )
 
         try:
-            version = self._exec_git("describe --tags --abbrev=0 --exact-match")
+            version = (
+                os.environ.get("WORKFLOW_VERSION", None)
+                or self._exec_git("describe --tags --abbrev=0 --exact-match")
+            )
         except subprocess.CalledProcessError:
             version = "unknown"
 

@@ -20,17 +20,12 @@ class CompilerWrapper():
             compiler + "_")
 
     def parse_custom_flags(self):
-        self.args += [
-            "-fgraphite-identity",
-            "-floop-nest-optimize",
-            "-fno-common",
-            "-fno-plt",
-        ]
-        if "-DOs" in self.args:
-            return
-        elif not "-Ofast" in self.args:
-            self.args += [
-                "-O2",
+        newargs = []
+        if not "-Ofast" in self.args and not "-DOs" in self.args:
+            if os.environ.get('WRAPPER_OPTIMIZE') == '1':
+                newargs += ["-O2"]
+        if not "-Ofast" in self.args:
+            newargs += [
                 # -O3
                 "-fgcse-after-reload",
                 "-fipa-cp-clone",
@@ -58,12 +53,16 @@ class CompilerWrapper():
                 "-fno-trapping-math",
                 "-funsafe-math-optimizations",
             ]
-        self.args += [
+        newargs += [
             "-fipa-pta",
             "-fdevirtualize-at-ltrans",
             # "-fno-semantic-interposition",
+            "-fgraphite-identity",
+            "-floop-nest-optimize",
+            "-fno-common",
+            "-fno-plt",
         ]
-
+        self.args += newargs
 
     def invoke_compiler(self):
         self.set_real_compiler()
